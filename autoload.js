@@ -19,7 +19,7 @@ function loadExternalResource(url, type) {
 		if (tag) {
 			tag.onload = () => resolve(url);
 			tag.onerror = () => reject(url);
-			document.head.appendChild(tag);
+			document.body.appendChild(tag); // vuepress@next 有 BUG 重复加载head，写到 body 中 
 		}
 	});
 }
